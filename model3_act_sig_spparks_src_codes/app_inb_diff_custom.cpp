@@ -98,19 +98,6 @@ double AppInbDiffCustom::custom_multiplier(int i, int rstyle, int which, int jpa
          } else return 1.0;
      } else return 0.0;
        
-   } else if (which==58) { // Diffusion: Inhibitory ligands
-     if(population[26][jpartner] != 0) {
-       int ir_ligand_fill_ahead = population[0][jpartner]+population[17][jpartner] + population[6][jpartner]+population[7][jpartner]+population[10][jpartner]+population[11][jpartner]+population[12][jpartner]+population[13][jpartner]+population[19][jpartner] +population[20][jpartner]+population[22][jpartner]+population[23][jpartner]+population[24][jpartner]+population[25][jpartner]+population[29][jpartner]+population[30][jpartner]+population[31][jpartner]+population[33][jpartner]+population[34][jpartner];
-;
-       if (ir_ligand_fill_ahead >=2500) {
-         return 0.0;
-       } else return 1.0;
-     } else return 0.0;
-       
-  } else if (which==61) { //  Inhibitory receptors + SFK
-     if(population[1][i] != 0) {
-         return 1.0;
-     } else return 0.0;
 
    } else if (which>=28 && which<=33) { // AR microcluster formation - pVAV dependent
     if ( (population[1][jpartner] != 0) && (population[1][i] != 0 )) {
