@@ -84,6 +84,7 @@ AppLattice::AppLattice(SPPARKS *spk, int narg, char **arg) : App(spk,narg,arg)
   
   app_update_only = 0;
   diff_tau_multiple = 1; //personalized
+//  vav_prime_diff_tau_multiple = 1; //personalized for case of no clustering
   shp_diff_tau_multiple = 1; //personalized
 }
 
@@ -578,7 +579,7 @@ void AppLattice::iterate_kmc_sector(double stoptime)
 	isite = solve->event(&dt);
 	timer->stamp(TIME_SOLVE);
     total_time_dt = total_time_dt + 1;
- 
+          
 	if (isite < 0) done = 1;
 	else {
 	  timesector += dt;
@@ -603,7 +604,7 @@ void AppLattice::iterate_kmc_sector(double stoptime)
 
     nsweeps++;
 
-// Vav homogenized diffusion tau = l^2/4D; = 17*17/10 = 7.225; here, l =  length of sim box + extended volume which is 17 micron.
+// Vav homogenized diffusion tau = l^2/4D; = 17*17/10 = 7.225; here, l =  length of sim box +extended volume which is 17 micron.
     int time_count_vav = 0;
     if (time > (7.225* diff_tau_multiple)) {
       time_count_vav = time_count_vav + 1;
@@ -648,7 +649,54 @@ void AppLattice::iterate_kmc_sector(double stoptime)
       }
     }
 
-// Shp homogenized diffusion tau = l^2/4D; = 17*17/10 = 7.225; here, l =  length of sim box + extended volume which is 17 micron.
+
+// Vav' homogenized diffusion tau = l^2/4D; = 17*17/10 = 7.225; here, l =  length of sim box +extended volume which is 17 micron. To be included for the case of no clustering
+/*    int time_count_vav_prime = 0;
+    if (time > (7.225* vav_prime_diff_tau_multiple)) {
+      time_count_vav_prime = time_count_vav_prime + 1;
+
+      if (time_count_vav_prime >= 1) {
+        vav_prime_diff_tau_multiple = vav_prime_diff_tau_multiple + 1;
+        int total_cyt_vav_prime = 0;
+        int avg_cyt_vav_prime = 0;
+        for (int kk = 0; kk < 1156; kk++) {
+          total_cyt_vav_prime = population[28][kk] +total_cyt_vav_prime;
+        }
+        avg_cyt_vav_prime = total_cyt_vav_prime/1156; 
+
+        int total_spare_cyt_vav_prime = 0;
+        int total_loss_cyt_vav_prime = 0;
+        int remaining_cyt_vav_prime = 0;
+
+        for (int kk = 0; kk < 1156; kk++) {
+          if (population[26][kk] != 0) {
+            if (population[28][kk] > avg_cyt_vav_prime) {
+              int spare_cyt_vav_prime = population[28][kk] - avg_cyt_vav_prime;
+              total_spare_cyt_vav_prime = total_spare_cyt_vav_prime + spare_cyt_vav_prime;
+              population[28][kk] = avg_cyt_vav_prime;
+            } else if (population[28][kk] < avg_cyt_vav_prime) {
+              int loss_cyt_vav_prime = avg_cyt_vav_prime - population[28][kk];
+              total_loss_cyt_vav_prime = total_loss_cyt_vav_prime + loss_cyt_vav_prime;
+              population[28][kk] = avg_cyt_vav_prime;
+            }
+          }
+        }
+        srand(0);
+        remaining_cyt_vav_prime = total_spare_cyt_vav_prime - total_loss_cyt_vav_prime;
+        int kkk = 0;
+        while (kkk < remaining_cyt_vav_prime) {
+           int r1 = 0;
+           r1 = (rand() % 1156);
+           if (population[26][r1] != 0 ) {
+             population[28][r1] = population[28][r1] +1;
+             kkk = kkk+1;
+           }
+        }
+      }
+    }*/
+
+
+// Shp homogenized diffusion tau = l^2/4D; = 17*17/10 = 7.225; here, l =  length of sim box +extended volume which is 17 micron.
     int time_count_shp = 0;
     if (time > (7.225* shp_diff_tau_multiple)) {
       time_count_shp = time_count_shp + 1;
