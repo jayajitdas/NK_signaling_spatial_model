@@ -34,6 +34,7 @@ class AppLattice : public App {
   int **neighbor;              // local indices of neighbors of each site
   int **population;              //personalized 
   int diff_tau_multiple;                    // personalized 
+//  int vav_prime_diff_tau_multiple;          // personalized for case of no clustering
   int shp_diff_tau_multiple;                // personalized 
 
   class CommLattice *comm;
