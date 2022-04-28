@@ -11,25 +11,25 @@ Each sub-directories contains source codes ( *.cpp and *.h files for SPPARKS) fo
 	   the rates are estimated by PSO)
 	5. model3_inb_spparks_src_codes (codes to Model 2 for simulation by both activating and inhibitory ligands; 
 	   the rates are estimated by PSO)
-	6. model1_act_no_clus_spparks_src_codes (codes to Model 1 for simulation by activating ligands without NKG2D cluster formation; the rates are estimated by PSO)
-	7. model2_act_no_clus_spparks_src_codes (codes to Model 2 for simulation by activating ligands without NKG2D cluster formation; the rates are estimated by PSO)
+	6. model1_act_no_clus_spparks_src_codes (codes to Model 1 for simulation by activating ligands without NKG2D cluster formation; 
+	   the rates are estimated by PSO)
+	7. model2_act_no_clus_spparks_src_codes (codes to Model 2 for simulation by activating ligands without NKG2D cluster formation; 
+	   the rates are estimated by PSO)
 
-Spparks:
---------
-Download Spparks from https://sjplimp.github.io//download.html
+Step1: Download Spparks from https://sjplimp.github.io//download.html
+----------------------------------------------------------------------
 
 To run a specific model, add the files (*.cpp and *.h) from the corresponding sub-directory to the "src" folder in the Spparks downloaded folder.
 
 For eg: If you want to simulate  Model 2 in presence of activating ligands only. Copy all *.cpp and *.h files from model2_act_spparks_src_codes 
 to the src folder of the SPPARKS downloaded folder.
 
-Step1: Build sparks executable: 
+Step2: Build sparks executable: 
 --------------------------------
 # go to directiry ~spparks_downloaded_folder/src
-# run following command to create executable redsky
+# run following command:
   make redsky
 # an executable file with the name spk_redsky will be generated.
-
 
 
 
@@ -38,14 +38,15 @@ Step1: Build sparks executable:
 Models:
 -------
 
-Each of these sub-directories contains a model you can run with SPPARKS. Each model has an input script (in.*), input read_file (sites.30.30), a bash script (run.sh) and produces a log file (log.*) and output files (sites.*.*) when they run. 
+Each of these sub-directories contains a model you can run using SPPARKS. Each model has an input script (in.*), input read_file (sites.30.30), 
+a bash script (run.sh) and produces a log file (log.*) and output files (sites.*.*) when they run. 
 
 The sites.*.* files produced by the model runs can be converted to *.vtk to visualize using ParaView-5.7.0
 
-Step2: How to run and visualize a particular model (For eg: Model 2 in presence of activating ligands):
+Step3: How to run and visualize a particular model (For eg: Model 2 in presence of activating ligands):
 -------------------------------------------------------------------------------------------------------
 cd model2_act	# go to the work directory
-cp ../~spparks_downloaded_folder/src/spk_redsky . #copy the executable file spk_redsky (from Step1) 
+cp ../~spparks_downloaded_folder/src/spk_redsky . #copy the executable file spk_redsky (from Step2) 
 						  build using “model2_act_sig_spparks_src_codes” from
 						 ~spparks_downloaded_folder/src folder to the current
 						  directory
@@ -71,7 +72,7 @@ These are the models in the various sub-directories:
 	   (inhibitory ligands are distributed heterogeneously e.g.ring); 
 	   the rates are estimated by PSO)
 
-Step3: Convert sites.*.* output files from each of the sub-directories to *.vtk for visualization using ParaView
+Step4: Convert sites.*.* output files from each of the sub-directories to *.vtk for visualization using ParaView
 -------------------------------------------------------------------------------------------------------
 Run the following command:
 
