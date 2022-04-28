@@ -1,20 +1,27 @@
 ------------------
-spparks_src_codes:
+Folder: spparks_src_codes:
 ------------------
 
-The source codes for Spparks to model NK signaling for different models and NK cell signaling are attached in the respective folders.
+Each sub-directories contains source codes ( *.cpp and *.h files for SPPARKS) for different models for NK cell signaling.
 
-	1. model1_act_sig_spparks_src_codes (source codes to stimulate Model 1 in presence of activating ligands; the rates are estimated by PSO)
-	2. model2_act_sig_spparks_src_codes (source codes to stimulate Model 2 in presence of activating ligands; the rates are estimated by PSO)
-	3. model3_act_sig_spparks_src_codes (source codes to stimulate Model 3 in presence of activating ligands; the rates are estimated by PSO)
-	4. model2_inb_sig_spparks_src_codes (source codes to stimulate Model 2 in presence of both activating and inhibitory ligands (inhibitory ligands are distributed heterogeneously e.g.ring); the rates are estimated by PSO)
-	5. model3_inb_sig_spparks_src_codes (source codes to stimulate Model 3 in presence of both activating and inhibitory ligands (inhibitory ligands are distributed heterogeneously e.g.ring); the rates are estimated by PSO)
+	1. model1_act_spparks_src_codes (codes to Model 1 for simulation by activating ligands; the rates are estimated by PSO)
+	2. model2_act_spparks_src_codes (codes to Model 2 for simulation by activating ligands; the rates are estimated by PSO)
+	3. model3_act_spparks_src_codes (codes to Model 3 for simulation by activating ligands; the rates are estimated by PSO)
+	4. model2_inb_spparks_src_codes (codes to Model 2 for simulation by both activating and inhibitory ligands; 
+	   the rates are estimated by PSO)
+	5. model3_inb_spparks_src_codes (codes to Model 2 for simulation by both activating and inhibitory ligands; 
+	   the rates are estimated by PSO)
+	6. model1_act_no_clus_spparks_src_codes (codes to Model 1 for simulation by activating ligands without NKG2D cluster formation; the rates are estimated by PSO)
+	7. model2_act_no_clus_spparks_src_codes (codes to Model 2 for simulation by activating ligands without NKG2D cluster formation; the rates are estimated by PSO)
 
 Spparks:
 --------
 Download Spparks from https://sjplimp.github.io//download.html
 
-To run a specific model, say Model 2 in presence of activating ligands only, merge the *.cpp files from the respective folder ( model2_act_sig_spparks_src_codes) with the src folder in the Spparks downloaded folder.
+To run a specific model, add the files (*.cpp and *.h) from the corresponding sub-directory to the "src" folder in the Spparks downloaded folder.
+
+For eg: If you want to simulate  Model 2 in presence of activating ligands only. Copy all *.cpp and *.h files from model2_act_spparks_src_codes 
+to the src folder of the SPPARKS downloaded folder.
 
 Step1: Build sparks executable: 
 --------------------------------
